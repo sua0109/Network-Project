@@ -1,12 +1,23 @@
 package MafiaGame;
 
+import MafiaGame.Mafia_Integrated.ClientHandler;
+
 public class Role_Civilian extends Role {
-	public Role_Civilian(Mafia gameInstance) {
-		super(gameInstance);
+	String role = "시민";
+	public Role_Civilian(ClientHandler player) {
+		super(player);
 	}
 	@Override
 	public String ability(String nickname) {
-		// TODO Auto-generated method stub
-		return null;
+		String notify=nickname+"의 공격을 받는 꿈을 꾸었습니다.";
+		return notify;
+	}
+	@Override
+	public void notifyCreation() {
+		String notify=
+				"당신은 시민입니다.\n"
+				+ "마피아의 공격으로부터 살아남아 모든 마피아를 색출하세요."
+				+ "현명한 판단으로 살아남으세요.";
+		player.sendSystemMessageToClient(notify);
 	}
 }
