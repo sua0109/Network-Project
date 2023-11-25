@@ -4,9 +4,10 @@ import java.util.TimerTask;
 import java.util.Timer;
 
 public class GameState_Day extends GameState {
-	private Timer timer=new Timer();
-	int time = 60;
+	private Timer timer= new Timer();
+	int time = 1; //기본은 60
 	String state = "낮";
+	
 	GameState_Day() {
 		super();
 		Mafia_Integrated.broadcastingSystem(time+"초 남았습니다.");
@@ -34,6 +35,7 @@ public class GameState_Day extends GameState {
 
 	@Override
 	void notifyCreation() {
+		Mafia.broadcasting(new ChatMsg(ChatMsg.CODE_DAY));
 		Mafia_Integrated.broadcastingSystem("낮이 되었습니다.");
 	}
 

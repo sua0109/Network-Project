@@ -2,22 +2,22 @@ package MafiaGame;
 
 import MafiaGame.Mafia_Integrated.ClientHandler;
 
-public class Role_Dead extends Role{
-	String role = "사망";
+public class Role_Observer extends Role{
+	String role = "관전자";
 
-	public Role_Dead(ClientHandler player) {
+	public Role_Observer(ClientHandler player) {
 		super(player);
 	}
 
 	@Override
 	public String ability(String nickname) {
-		return null;
+		return "관전자는 능력이 없습니다.";
 	}
 
 	@Override
 	public void notifyCreation() {
 		String notify="\n\n***************************************************\n\n"+
-				"당신은 죽었습니다.\n\n"+
+				"당신은 관전자입니다.\n\n"+
 				"***************************************************\n";
 		player.sendSystemMessageToClient(notify);
 	}

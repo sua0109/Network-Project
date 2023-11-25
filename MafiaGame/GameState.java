@@ -3,6 +3,7 @@ package MafiaGame;
 abstract class GameState {
 	String state; //"낮" & "밤" & "투표"
 	GameState() {
+		Mafia_Integrated.controlUpdate();
 		notifyCreation();
 	}
 	public String toString() {
