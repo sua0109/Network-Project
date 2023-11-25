@@ -15,9 +15,13 @@ public class Role_Civilian extends Role {
 	@Override
 	public void notifyCreation() {
 		String notify=
-				"당신은 시민입니다.\n"
-				+ "마피아의 공격으로부터 살아남아 모든 마피아를 색출하세요."
-				+ "현명한 판단으로 살아남으세요.";
+				"\n\n***************************************************\n\n"+
+				"당신은 시민입니다.\n\n"
+				+ "마피아의 공격으로부터 살아남아 모든 마피아를 색출하세요.\n\n"+
+				"***************************************************\n";
 		player.sendSystemMessageToClient(notify);
+	}
+	public String toString() {
+		return role;
 	}
 }
