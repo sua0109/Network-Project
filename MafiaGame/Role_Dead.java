@@ -7,11 +7,12 @@ public class Role_Dead extends Role{
 
 	public Role_Dead(ClientHandler player) {
 		super(player);
+		player.sendToClient(new ChatMsg(ChatMsg.CODE_DEATH));
 	}
 
 	@Override
 	public String ability(String nickname) {
-		return null;
+		return "사망자는 능력이 없습니다.";
 	}
 
 	@Override

@@ -35,7 +35,7 @@ public class GameState_Day extends GameState {
 
 	@Override
 	void notifyCreation() {
-		Mafia.broadcasting(new ChatMsg(ChatMsg.CODE_DAY));
+		Mafia.broadcastingToAlive(new ChatMsg(ChatMsg.CODE_DAY)); // GUI 원격 조작 메세지는 생존자에게만 전달
 		Mafia_Integrated.broadcastingSystem("낮이 되었습니다.");
 	}
 
