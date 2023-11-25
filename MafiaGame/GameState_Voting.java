@@ -22,7 +22,7 @@ public class GameState_Voting extends GameState {
 		startVote();
 	}
 	void notifyCreation() {
-		Mafia.broadcasting(new ChatMsg(ChatMsg.CODE_VOTING));
+		Mafia.broadcastingToAlive(new ChatMsg(ChatMsg.CODE_VOTING));
 		Mafia_Integrated.broadcastingSystem("투표가 시작되었습니다.");
 	}
 	String resultAbility(String user, String nominee) {
@@ -32,7 +32,9 @@ public class GameState_Voting extends GameState {
 			votingList.put(user, nominee);
 			return "["+nominee+"] 투표";
 		}
-		else if(isVotingTime&&Mafia.roles.containsKey(nominee)&&!Mafia.roles.get(nominee).toString().equals("사망")) {
+		else if(isVotingTime&&Mafia.roles.containsKey(nominee)
+				&&!Mafia.roles.get(nominee).toString().equals("사망")
+				&&!Mafia.roles.get(nominee).toString().equals("관전자")) {
 			votingList.put(user, nominee);
 			return "["+nominee+"] 투표";
 		}
