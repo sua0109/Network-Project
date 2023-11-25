@@ -30,8 +30,8 @@ public class GameState_Night extends GameState {
 	}
 
 	String resultAbility(String nickname, String message) {
-		
-		return null;
+		String returnMessage = Mafia.roles.get(nickname).ability(message);
+		return returnMessage;
 	}
 
 	void readMessage(ChatMsg msg) {
