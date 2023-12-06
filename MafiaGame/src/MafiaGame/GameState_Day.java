@@ -21,8 +21,10 @@ public class GameState_Day extends GameState {
             		Mafia_Integrated.broadcastingSystem(time+"초 남았습니다.");
             	else if(time==10)
             		Mafia_Integrated.broadcastingSystem(time+"초 남았습니다.");
-            	else if(time==0)
+            	else if(time==0) {
             		nextState();
+            		timer.cancel();
+            	}
             	time--;
             }
         }, 0, 1000); // 0초부터 시작하여 1초 간격으로 실행
