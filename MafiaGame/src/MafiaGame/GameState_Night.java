@@ -43,6 +43,7 @@ public class GameState_Night extends GameState {
 	void notifyCreation() {
 		Mafia.broadcastingToAlive(new ChatMsg(ChatMsg.CODE_NIGHT));
 		Mafia_Integrated.broadcastingSystem("밤이 되었습니다.");
+		Mafia_Integrated.broadcastingMafia("\n****************** 마피아 전용채팅 ******************\n");
 	}
 
 	@Override
