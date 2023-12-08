@@ -19,6 +19,9 @@ public class Role_Mafia extends Role {
 	
 	@Override
 	public String ability(String nickname) {
+		if (roles.get(nickname) == null) {
+			return "존재하지 않는 유저입니다.";
+		}
 		if (roles.get(nickname) instanceof Role_Dead) {
 			return "사망자는 공격할 수 없습니다.";
 		}

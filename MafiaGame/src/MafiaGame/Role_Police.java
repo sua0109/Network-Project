@@ -13,7 +13,7 @@ public class Role_Police extends Role {
 	@Override
 	public String ability(String nickname) { // 능력사용 1번으로 제한
 		if (abilityCount == 0) {
-			return"더 이상 사용할 수 없습니다.";
+			return "더 이상 사용할 수 없습니다.";
 		}
 		Role role = Mafia.roles.get(nickname);
 		abilityCount--;

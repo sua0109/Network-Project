@@ -4,7 +4,6 @@ import java.util.*;
 import java.util.Map.Entry;
 
 public class GameState_Voting extends GameState {
-//	Mafia game;
 	String state="투표";
 	int time = 60; // 기본 60초, 추후 설정을 통해 변경 가능
 
@@ -23,11 +22,13 @@ public class GameState_Voting extends GameState {
 	}
 	void notifyCreation() {
 		Mafia.broadcastingToAlive(new ChatMsg(ChatMsg.CODE_VOTING));
-		Mafia_Integrated.broadcastingSystem("투표가 시작되었습니다.");
+		Mafia_Integrated.broadcastingSystem("[--------- 투표가 시작되었습니다 ---------]");
 	}
 	String resultAbility(String user, String nominee) {
 		if(user.equals(Nominee))
 			return "최다 득표자는 투표할 수 없습니다.";
+		else if (votingList.containsKey(user))
+			return "이미 투표하셨습니다.";
 		else if(isApprovalTime&&(nominee.equals("Y") || nominee.equals("N"))) {
 			votingList.put(user, nominee);
 			return "["+nominee+"] 투표";
@@ -90,7 +91,7 @@ public class GameState_Voting extends GameState {
 			Mafia_Integrated.broadcastingSystem("["+now+"] - "+vote.get(now)+"\n");
 		}
 		if(Nominee==null||Nominee.equals("None")) {
-			Mafia_Integrated.broadcastingSystem("부결되었습니다.");
+			Mafia_Integrated.broadcastingSystem("[--------- 부결되었습니다 ---------]");
 			return false;
 		}
 		else {
@@ -129,11 +130,11 @@ public class GameState_Voting extends GameState {
         		    vote.put(approval, vote.getOrDefault(approval, 0) + 1);
         		}
             	if(resultApprovalVote()) {
-            		Mafia_Integrated.broadcastingSystem("["+Nominee+"]"+" 사형되었습니다.");
+            		Mafia_Integrated.broadcastingSystem("[--------- "+ Nominee + " 님이 사형되었습니다 ---------]");
         			Mafia.roles.put(Nominee, new Role_Dead(Mafia_Integrated.players.get(Nominee)));
             	}
             	else
-            		Mafia_Integrated.broadcastingSystem("부결되었습니다.");
+            		Mafia_Integrated.broadcastingSystem("[--------- 부결되었습니다 --------]");
             	nextState();
             }
         }, 10000);
