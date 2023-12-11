@@ -21,7 +21,7 @@ public Mafia() {
       if(msg.mode==ChatMsg.MODE_MESSAGE) {
          if(roles.get(msg.nickname).toString().equals("관전자"))
             Mafia_Integrated.players.get(msg.nickname).sendSystemMessageToClient("생존자만 대화할 수 있습니다.");
-         else if (roles.get(msg.nickname).toString().equals("마피아")) {
+         else if (roles.get(msg.nickname).toString().equals("마피아") && state instanceof GameState_Night) {
             broadcastingMafia(msg);
          }else if (roles.get(msg.nickname).toString().equals("사망")) {
             broadcastingDeath(msg);
