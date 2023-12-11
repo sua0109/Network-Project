@@ -22,6 +22,7 @@ public class ChatMsg implements Serializable {
 	public final static int CODE_NIGHT = 0x1000;
 	public final static int CODE_UPDATE = 0x2000;
 	public final static int CODE_KICK = 0x4000;
+	public final static int CODE_ROLE = 0x8000;
 
 	String nickname;
 	int mode;
@@ -37,7 +38,6 @@ public class ChatMsg implements Serializable {
 	public ChatMsg(String nickname, int mode, String message) { // 일반 메세지 && 커맨드 && 전용 채팅 전송
 		this(nickname, mode, message, 0);
 	}
-	
 	public ChatMsg(String nickname, int mode) { // 유저 입장 & 퇴장
 		this(nickname, mode, "", 0);
 	}

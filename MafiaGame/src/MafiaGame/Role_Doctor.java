@@ -1,22 +1,19 @@
 package MafiaGame;
 
-import static MafiaGame.Mafia_Integrated.healUser;
-
 import MafiaGame.Mafia_Integrated.ClientHandler;
 
 public class Role_Doctor extends Role {
 	String role = "의사";
-	boolean alive;
-	String Healed;
 
 	public Role_Doctor(ClientHandler player) {
 		super(player);
+		this.player.sendToClient(new ChatMsg(ChatMsg.MODE_CONTROL,ChatMsg.CODE_ROLE,role));
 	}
 
 	@Override
 	public String ability(String nickname) {
-		healUser.add(nickname);
-		return "[" + nickname + "]" + "님을 치료합니다.";
+		return "[" + nickname + "]" + "님을 치료합니다.\n"
+				+ "치료 대상을 변경하고 싶으면 다시 지목하세요.";
 	}
 
 	@Override

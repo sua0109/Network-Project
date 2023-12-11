@@ -1,8 +1,5 @@
 package MafiaGame;
 
-import static MafiaGame.Mafia_Integrated.deathPlayers;
-import static MafiaGame.Mafia_Integrated.mafiaPlayers;
-
 import MafiaGame.Mafia_Integrated.ClientHandler;
 
 public class Role_Dead extends Role{
@@ -10,8 +7,8 @@ public class Role_Dead extends Role{
 
 	public Role_Dead(ClientHandler player) {
 		super(player);
-		deathPlayers.add(player);
 		player.sendToClient(new ChatMsg(ChatMsg.CODE_DEATH));
+		this.player.sendToClient(new ChatMsg(ChatMsg.MODE_CONTROL,ChatMsg.CODE_ROLE,role));
 	}
 
 	@Override
